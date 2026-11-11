@@ -130,6 +130,7 @@ export async function downloadGalleryImages(options: DownloadImageOptions) {
     addTitleToImages = false,
     filenamePattern = "{subreddit}_{timestamp}_{filename}",
     postTitle,
+    postAuthor,
     offscreen = false,
   } = options;
 
@@ -179,6 +180,7 @@ export async function downloadGalleryImages(options: DownloadImageOptions) {
         timestamp: getCurrentTimestamp(),
         filename: extractFilenameFromUrl(url),
         extension,
+        user: postAuthor,
         title: postTitle,
       });
 
@@ -221,6 +223,7 @@ export async function downloadVideo(options: DownloadVideoOptions) {
     subredditName = "unknown",
     addTitleToVideo = false,
     postTitle,
+    postAuthor,
     filenamePattern,
     offscreen = false,
   } = options;
@@ -259,6 +262,7 @@ export async function downloadVideo(options: DownloadVideoOptions) {
       timestamp: getCurrentTimestamp(),
       filename: extractFilenameFromUrl(url),
       extension,
+      user: postAuthor,
       title: postTitle,
     });
     const outputPath = sanitizeDownloadPath(`${folderDestination}/${filename}`);
